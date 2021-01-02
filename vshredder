@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+    echo "Usage: vshredder file_name"
+    exit;
+fi
+
+2>/dev/null 1>/dev/null mplayer "$1" &
+
+echo "Press q key to exit"
+while [ true ] ; do
+    jc=($(jobs -l))
+    echo -n "${jc[0]}> "
+    read input
+    ss=($input)
+    if [ "$ss" = q ] ; then
+        exit;
+    else
+        s=${ss[0]}
+        e="${ss[1]}"
+        2>/dev/null 1>/dev/null ffmpeg -i "$1" -ss "$s" -to "$e" "$1_$s-$e.mp4" &
+    fi
+done
