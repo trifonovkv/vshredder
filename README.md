@@ -13,7 +13,7 @@ Ubuntu:
 `wget https://raw.githubusercontent.com/trifonovkv/vshredder/main/vshredder`   
 `chmod +x ./vshredder`
 
-## Usag:
+## Usage:
 `vshredder /path/to/video_file`
 
 ## Contributing
